@@ -218,18 +218,22 @@ class _BlogScreenState extends State<BlogScreen> {
   }
 
   void navigaetToEditBlogScreen(int index) {
+    final Blog blog = blogs[index];
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>  EditBlogScreen( eblog: blogs[index].toString(),),
+          builder: (context) => EditBlogScreen(
+            title: blog.title,
+            body: blog.body,
+            imageUrl: blog.imageUrl,
+          ),
         )).then((value) {
-          if (value == null) {
-            return;
-          }
-          blogs[index] = value;
-          setState(() {
-
-          });
+      if (value == null) {
+        return;
+      }
+      final Blog blog = value;
+      blogs[index] = blog;
+      setState(() {});
     });
   }
 }

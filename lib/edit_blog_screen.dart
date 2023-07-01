@@ -2,9 +2,16 @@ import 'package:blog/blog.dart';
 import 'package:flutter/material.dart';
 
 class EditBlogScreen extends StatefulWidget {
-   EditBlogScreen({Key? key, required this.eblog, }) : super(key: key);
+  const EditBlogScreen({
+    Key? key,
+    required this.title,
+    required this.body,
+    required this.imageUrl,
+  }) : super(key: key);
 
-  final String eblog;
+  final String title;
+  final String body;
+  final String imageUrl;
 
   @override
   State<EditBlogScreen> createState() => _EditBlogScreenState();
@@ -17,21 +24,20 @@ class _EditBlogScreenState extends State<EditBlogScreen> {
 
   final editImageController = TextEditingController();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   ediTitleController.text = widget.eblog;
-  //   editBodyController.text = widget.eblog;
-  //   editImageController.text = widget.eblog;
-  // }
-
+  @override
+  void initState() {
+    super.initState();
+    ediTitleController.text = widget.title;
+    editBodyController.text = widget.body;
+    editImageController.text = widget.imageUrl;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "New Blog",
+          "Edit Blog",
           style: TextStyle(color: Colors.white),
         ),
       ),
